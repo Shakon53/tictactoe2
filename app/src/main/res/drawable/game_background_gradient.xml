@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Вертикальный градиент экрана игры: яркий синий сверху → тёмно-синий снизу -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="270"
+        android:endColor="@color/game_bg_bottom"
+        android:startColor="@color/game_bg_top"
+        android:type="linear" />
+</shape>

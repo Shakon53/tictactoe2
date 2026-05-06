@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Tic-tac-toe</string>
+    <string name="splash_loading">Loading...</string>
+</resources>

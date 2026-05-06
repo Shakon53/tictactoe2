@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Кнопка в стиле мобильной игры: фиолетово-пурпурный градиент (Restart) -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="90"
+                android:endColor="#6D28D9"
+                android:startColor="#A855F7"
+                android:type="linear" />
+            <corners android:radius="22dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="90"
+                android:endColor="#7C3AED"
+                android:startColor="#C026D3"
+                android:type="linear" />
+            <corners android:radius="22dp" />
+        </shape>
+    </item>
+</selector>

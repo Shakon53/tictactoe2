@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="game_symbol_x">#FF1976D2</color>
+    <color name="game_symbol_o">#FFD32F2F</color>
+    <color name="text_secondary">#FF757575</color>
+    <color name="accent_danger">#FFE53935</color>
+    <color name="accent_green">#FF2E7D32</color>
+    <color name="accent_primary">#FF5E60CE</color>
+    <color name="cell_bg">#FFFFFFFF</color>
+    <color name="cell_pressed">#FFEDE7F6</color>
+    <color name="cell_stroke">#FFD1C4E9</color>
+    <color name="game_card_stroke">#33FFFFFF</color>
+    <color name="game_bg_top">#FF1C1F4A</color>
+    <color name="game_bg_bottom">#FF0D102F</color>
+    <color name="difficulty_easy">#FF22C55E</color>
+    <color name="difficulty_normal">#FFF59E0B</color>
+    <color name="difficulty_hard">#FFEF4444</color>
+</resources>

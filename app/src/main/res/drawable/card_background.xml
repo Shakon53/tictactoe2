@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Полупрозрачная карточка верхней панели: мягкая обводка и скругление -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#CC1E3A8A" />
+    <stroke
+        android:width="1dp"
+        android:color="@color/game_card_stroke" />
+    <corners android:radius="20dp" />
+</shape>

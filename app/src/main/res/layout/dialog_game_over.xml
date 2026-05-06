@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/game_card"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <!-- Big result icon -->
+    <TextView
+        android:id="@+id/tvGameOverIcon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="?"
+        android:textSize="44sp"
+        android:background="@drawable/game_board_bg" />
+
+    <!-- Title: VICTORY / DEFEAT / DRAW -->
+    <TextView
+        android:id="@+id/tvGameOverTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-black"
+        android:text="GAME OVER"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.03" />
+
+    <!-- Score line -->
+    <TextView
+        android:id="@+id/tvGameOverMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="0W  ·  0L  ·  0D"
+        android:textColor="#4A5568"
+        android:textSize="15sp" />
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="16dp"
+        android:background="#2D3A5C" />
+
+    <!-- Confirm button -->
+    <Button
+        android:id="@+id/btnGameOverOk"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/gold_button"
+        android:fontFamily="sans-serif-black"
+        android:stateListAnimator="@null"
+        android:text="AWESOME!"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
