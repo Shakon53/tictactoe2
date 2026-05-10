@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -80,7 +82,12 @@ public class SupportActivity extends BaseGameActivity {
 
         // Submit
         GameButtonHelper.apply(btnSubmit);
-        btnSubmit.setOnClickListener(v -> submitReport(username));
+        // Get email from Firebase Auth (Google Sign-In)
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String email = (currentUser != null && currentUser.getEmail() != null)
+                ? currentUser.getEmail() : "";
+
+        btnSubmit.setOnClickListener(v -> submitReport(username, email));
 
         // Success close
         Button btnClose = findViewById(R.id.btnSupportClose);
@@ -127,7 +134,7 @@ public class SupportActivity extends BaseGameActivity {
         tv.setBackground(bg);
     }
 
-    private void submitReport(String username) {
+    private void submitReport(String username, String email) {
         String subject = etSubject.getText().toString().trim();
         String message = etMessage.getText().toString().trim();
 
@@ -147,6 +154,7 @@ public class SupportActivity extends BaseGameActivity {
 
         Map<String, Object> data = new HashMap<>();
         data.put("reporter",  username);
+        data.put("email",     email);
         data.put("subject",   subject);
         data.put("category",  selectedCategory);
         data.put("message",   message);
