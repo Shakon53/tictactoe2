@@ -60,6 +60,12 @@
             android:name=".SupportActivity"
             android:exported="false" />
         <activity
+            android:name=".Game2048Activity"
+            android:exported="false" />
+        <activity
+            android:name=".SudokuActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>

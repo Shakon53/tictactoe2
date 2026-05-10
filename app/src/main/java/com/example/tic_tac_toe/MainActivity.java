@@ -356,9 +356,11 @@ public class MainActivity extends BaseGameActivity {
 
         Button btnPlayMemory = dialog.findViewById(R.id.btnPlayMemory);
         Button btnPlaySnake  = dialog.findViewById(R.id.btnPlaySnake);
+        Button btnPlay2048   = dialog.findViewById(R.id.btnPlay2048);
+        Button btnPlaySudoku = dialog.findViewById(R.id.btnPlaySudoku);
         Button btnClose      = dialog.findViewById(R.id.btnMoreGamesClose);
 
-        GameButtonHelper.applyAll(btnPlayMemory, btnPlaySnake, btnClose);
+        GameButtonHelper.applyAll(btnPlayMemory, btnPlaySnake, btnPlay2048, btnPlaySudoku, btnClose);
         btnPlayMemory.setOnClickListener(v -> {
             dialog.dismiss();
             startActivity(new Intent(this, MemoryMatchActivity.class));
@@ -367,6 +369,16 @@ public class MainActivity extends BaseGameActivity {
         btnPlaySnake.setOnClickListener(v -> {
             dialog.dismiss();
             startActivity(new Intent(this, SnakeActivity.class));
+            overridePendingTransition(R.anim.page_in_right, R.anim.page_out_left);
+        });
+        btnPlay2048.setOnClickListener(v -> {
+            dialog.dismiss();
+            startActivity(new Intent(this, Game2048Activity.class));
+            overridePendingTransition(R.anim.page_in_right, R.anim.page_out_left);
+        });
+        btnPlaySudoku.setOnClickListener(v -> {
+            dialog.dismiss();
+            startActivity(new Intent(this, SudokuActivity.class));
             overridePendingTransition(R.anim.page_in_right, R.anim.page_out_left);
         });
         btnClose.setOnClickListener(v -> dialog.dismiss());

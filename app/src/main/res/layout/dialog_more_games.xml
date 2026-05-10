@@ -198,27 +198,27 @@
         android:layout_marginHorizontal="20dp"
         android:background="@color/glass_border" />
 
-    <!-- ── COMING SOON label ── -->
+    <!-- ── MORE GAMES label ── -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="14dp"
         android:layout_marginBottom="10dp"
-        android:text="○ COMING SOON"
-        android:textColor="@color/text_tertiary"
+        android:text="● MORE GAMES"
+        android:textColor="@color/neon_orange"
         android:textSize="10sp"
         android:textStyle="bold"
         android:letterSpacing="0.10" />
 
-    <!-- ── 2048 card (locked) ── -->
+    <!-- ── 2048 card ── -->
     <LinearLayout
+        android:id="@+id/row2048"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="10dp"
-        android:alpha="0.45"
-        android:background="@drawable/bg_game_card_locked"
+        android:background="@drawable/bg_game_card_purple"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="14dp">
@@ -259,27 +259,29 @@
                 android:textSize="11sp" />
         </LinearLayout>
 
-        <TextView
+        <Button
+            android:id="@+id/btnPlay2048"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:layout_marginStart="12dp"
-            android:background="@drawable/bg_room_input"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="7dp"
-            android:text="COMING SOON"
-            android:textColor="@color/text_tertiary"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:background="@drawable/btn_primary_purple"
+            android:stateListAnimator="@null"
+            android:text="▶  PLAY"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="0dp" />
     </LinearLayout>
 
-    <!-- ── SUDOKU card (locked) ── -->
+    <!-- ── SUDOKU card ── -->
     <LinearLayout
+        android:id="@+id/rowSudoku"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="18dp"
-        android:alpha="0.45"
-        android:background="@drawable/bg_game_card_locked"
+        android:background="@drawable/bg_game_card_teal"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="14dp">
@@ -320,17 +322,19 @@
                 android:textSize="11sp" />
         </LinearLayout>
 
-        <TextView
+        <Button
+            android:id="@+id/btnPlaySudoku"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:layout_marginStart="12dp"
-            android:background="@drawable/bg_room_input"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="7dp"
-            android:text="COMING SOON"
-            android:textColor="@color/text_tertiary"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:background="@drawable/btn_teal"
+            android:stateListAnimator="@null"
+            android:text="▶  PLAY"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="0dp" />
     </LinearLayout>
 
     <!-- ── CLOSE button ── -->

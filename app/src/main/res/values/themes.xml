@@ -25,6 +25,19 @@
         <item name="android:taskCloseExitAnimation">@anim/page_out_right</item>
     </style>
 
+    <style name="SudokuNumBtn">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginHorizontal">2dp</item>
+        <item name="android:background">@drawable/bg_glass_card</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
     <style name="NeonSwitchStyle" parent="Widget.MaterialComponents.CompoundButton.Switch">
         <item name="thumbTint">@color/switch_thumb_color</item>
         <item name="trackTint">@color/switch_track_color</item>
