@@ -1,16 +1,32 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Theme.Tictactoe" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/neon_purple</item>
+        <item name="colorPrimaryVariant">@color/btn_purple_start</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="colorSecondary">@color/neon_cyan</item>
+        <item name="colorSecondaryVariant">@color/btn_blue_start</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <item name="colorSurface">@color/game_bg_bottom</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="switchStyle">@style/NeonSwitchStyle</item>
+        <item name="android:windowAnimationStyle">@style/GameWindowAnimation</item>
+    </style>
+
+    <style name="GameWindowAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/page_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/page_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/page_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/page_out_right</item>
+        <item name="android:taskOpenEnterAnimation">@anim/page_in_right</item>
+        <item name="android:taskOpenExitAnimation">@anim/page_out_left</item>
+        <item name="android:taskCloseEnterAnimation">@anim/page_in_left</item>
+        <item name="android:taskCloseExitAnimation">@anim/page_out_right</item>
+    </style>
+
+    <style name="NeonSwitchStyle" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/switch_thumb_color</item>
+        <item name="trackTint">@color/switch_track_color</item>
     </style>
 </resources>

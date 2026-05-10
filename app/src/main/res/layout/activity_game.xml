@@ -1,290 +1,325 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@drawable/gradient_bg">
 
-    <!-- Top bar: Back | Room Code | Spacer -->
-    <LinearLayout
-        android:id="@+id/topBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+    <!-- Background blob -->
+    <View
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="-40dp"
+        android:layout_marginEnd="-40dp"
+        android:background="@drawable/bg_blob_purple"
+        android:alpha="0.4" />
 
-        <Button
-            android:id="@+id/btnBackToMenu"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/btn_back"
-            android:stateListAnimator="@null"
-            android:text="&#8592;"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            android:padding="0dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
-
-        <!-- Room code center -->
+        <!-- ===== TOP BAR ===== -->
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ROOM CODE"
-                android:textColor="#4A5568"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.2" />
-
-            <TextView
-                android:id="@+id/tvRoomCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#A855F7"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                tools:text="1234" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
-
-        <!-- Spacer matching back button width -->
-        <View
-            android:layout_width="48dp"
-            android:layout_height="48dp" />
-    </LinearLayout>
-
-    <!-- Player VS Player panel -->
-    <LinearLayout
-        android:id="@+id/playerPanel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/game_card"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="12dp"
-        app:layout_constraintTop_toBottomOf="@id/topBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <!-- Left: YOU -->
-        <LinearLayout
+            android:id="@+id/topBar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tvMySymbol"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:gravity="center"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                android:background="@drawable/game_card"
-                tools:text="X"
-                tools:textColor="#FBBF24" />
-
-            <TextView
-                android:id="@+id/tvMyName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+            <Button
+                android:id="@+id/btnBackToMenu"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/btn_back"
+                android:padding="0dp"
+                android:stateListAnimator="@null"
+                android:text="&#8592;"
                 android:textColor="#FFFFFF"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:maxLines="1"
-                android:ellipsize="end"
-                tools:text="Player" />
+                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/tvMyScore"
-                android:layout_width="wrap_content"
+            <!-- Room code center -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:textColor="#4A5568"
-                android:textSize="11sp"
-                tools:text="0W  0L  0D" />
-        </LinearLayout>
-
-        <!-- VS divider -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:text="VS"
-            android:textColor="#2D3A5C"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <!-- Right: OPPONENT -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/tvOppSymbol"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                android:background="@drawable/game_card"
-                tools:text="O"
-                tools:textColor="#38BDF8" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvOppName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:maxLines="1"
-                android:ellipsize="end"
-                tools:text="Opponent" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ROOM CODE"
+                    android:textColor="@color/text_tertiary"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.2" />
 
-            <TextView
-                android:id="@+id/tvOppScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:textColor="#4A5568"
-                android:textSize="11sp"
-                tools:text="0W  0L  0D" />
+                <TextView
+                    android:id="@+id/tvRoomCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/neon_purple"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="1234" />
+            </LinearLayout>
+
+            <View android:layout_width="44dp" android:layout_height="44dp" />
         </LinearLayout>
-    </LinearLayout>
 
-    <!-- Turn status + timer row -->
-    <LinearLayout
-        android:id="@+id/statusRow"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/playerPanel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TextView
-            android:id="@+id/tvGameStatus"
+        <!-- ===== PLAYER PANEL ===== -->
+        <LinearLayout
+            android:id="@+id/playerPanel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_glass_card"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
             android:paddingHorizontal="16dp"
-            android:paddingVertical="10dp"
-            android:background="@drawable/game_card"
-            android:textColor="#FBBF24"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            tools:text="Your Turn!" />
+            android:paddingVertical="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topBar">
 
-        <LinearLayout
-            android:id="@+id/timerPanel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="10dp"
-            android:background="@drawable/game_card"
-            android:visibility="gone">
+            <!-- LEFT: YOU -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvTimer"
+                <TextView
+                    android:id="@+id/tvMySymbol"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_x_symbol"
+                    android:gravity="center"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    tools:text="X"
+                    tools:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvMyScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="#FBCE5C"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:text="0" />
+
+                <TextView
+                    android:id="@+id/tvMyStats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:textColor="@color/text_tertiary"
+                    android:textSize="11sp"
+                    tools:text="0L · 0D" />
+
+                <TextView
+                    android:id="@+id/tvMyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.06"
+                    tools:text="YOU" />
+            </LinearLayout>
+
+            <!-- CENTER: VS + Timer -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="30"
-                android:textColor="#FBBF24"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-black" />
+                android:gravity="center"
+                android:layout_marginHorizontal="8dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VS"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Timer panel (shown/hidden by Java) -->
+                <FrameLayout
+                    android:id="@+id/timerPanel"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone">
+
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/circularTimer"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_gravity="center"
+                        android:max="30"
+                        android:progress="30"
+                        app:indicatorColor="@color/neon_orange"
+                        app:trackColor="#33FFFFFF"
+                        app:trackThickness="5dp"
+                        app:indicatorSize="66dp" />
+
+                    <TextView
+                        android:id="@+id/tvTimer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="30"
+                        android:textColor="@color/neon_orange"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- RIGHT: OPPONENT -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="sec"
-                android:textColor="#4A5568"
-                android:textSize="10sp" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvOppSymbol"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_o_symbol"
+                    android:gravity="center"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    tools:text="O"
+                    tools:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvOppScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="#38BDF8"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:text="0" />
+
+                <TextView
+                    android:id="@+id/tvOppStats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:textColor="@color/text_tertiary"
+                    android:textSize="11sp"
+                    tools:text="0L · 0D" />
+
+                <TextView
+                    android:id="@+id/tvOppName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.06"
+                    tools:text="OPPONENT" />
+            </LinearLayout>
+
         </LinearLayout>
-    </LinearLayout>
 
-    <!-- Hidden compat fields (not visible, keep for legacy) -->
-    <TextView
-        android:id="@+id/tvPlayerYou"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone" />
+        <!-- ===== STATUS ROW ===== -->
+        <LinearLayout
+            android:id="@+id/statusRow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/playerPanel">
 
-    <TextView
-        android:id="@+id/tvPlayerBadge"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone" />
+            <TextView
+                android:id="@+id/tvGameStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_turn_indicator"
+                android:gravity="center"
+                android:paddingVertical="13dp"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                tools:text="YOUR TURN ☆" />
+        </LinearLayout>
 
-    <!-- Game board -->
-    <LinearLayout
-        android:id="@+id/gameBoard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/game_board_bg"
-        android:padding="10dp"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/statusRow"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.45">
+        <!-- Hidden compat fields -->
+        <TextView
+            android:id="@+id/tvPlayerYou"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone" />
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:columnCount="3"
-            android:rowCount="3">
+        <TextView
+            android:id="@+id/tvPlayerBadge"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone" />
 
-            <Button android:id="@+id/btn0" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
-            <Button android:id="@+id/btn1" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
-            <Button android:id="@+id/btn2" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
-            <Button android:id="@+id/btn3" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
-            <Button android:id="@+id/btn4" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
-            <Button android:id="@+id/btn5" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
-            <Button android:id="@+id/btn6" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
-            <Button android:id="@+id/btn7" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
-            <Button android:id="@+id/btn8" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
+        <!-- ===== GAME BOARD ===== -->
+        <LinearLayout
+            android:id="@+id/gameBoard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_glass_card"
+            android:padding="10dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/statusRow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.45">
 
-        </GridLayout>
-    </LinearLayout>
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:columnCount="3"
+                android:rowCount="3">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <Button android:id="@+id/btn0" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
+                <Button android:id="@+id/btn1" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
+                <Button android:id="@+id/btn2" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
+                <Button android:id="@+id/btn3" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
+                <Button android:id="@+id/btn4" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
+                <Button android:id="@+id/btn5" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
+                <Button android:id="@+id/btn6" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
+                <Button android:id="@+id/btn7" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
+                <Button android:id="@+id/btn8" android:layout_width="0dp" android:layout_height="0dp" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="5dp" android:background="@drawable/game_cell" android:stateListAnimator="@null" android:textSize="40sp" android:textStyle="bold" />
+
+            </GridLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

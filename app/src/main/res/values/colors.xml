@@ -2,24 +2,77 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Base Colors -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="game_symbol_x">#FF1976D2</color>
-    <color name="game_symbol_o">#FFD32F2F</color>
-    <color name="text_secondary">#FF757575</color>
-    <color name="accent_danger">#FFE53935</color>
-    <color name="accent_green">#FF2E7D32</color>
-    <color name="accent_primary">#FF5E60CE</color>
-    <color name="cell_bg">#FFFFFFFF</color>
-    <color name="cell_pressed">#FFEDE7F6</color>
-    <color name="cell_stroke">#FFD1C4E9</color>
-    <color name="game_card_stroke">#33FFFFFF</color>
-    <color name="game_bg_top">#FF1C1F4A</color>
-    <color name="game_bg_bottom">#FF0D102F</color>
-    <color name="difficulty_easy">#FF22C55E</color>
+
+    <!-- Game Symbols - Neon -->
+    <color name="game_symbol_x">#FFFF2D78</color>
+    <color name="game_symbol_o">#FF2979FF</color>
+
+    <!-- Background Gradients - Dark Navy Purple -->
+    <color name="gradient_start">#FF0B0920</color>
+    <color name="gradient_end">#FF1A0D38</color>
+    <color name="game_bg_top">#FF0B0920</color>
+    <color name="game_bg_bottom">#FF1A0D38</color>
+
+    <!-- Neon Accents -->
+    <color name="neon_pink">#FFFF2D78</color>
+    <color name="neon_blue">#FF2979FF</color>
+    <color name="neon_purple">#FF8B5CF6</color>
+    <color name="neon_cyan">#FF06B6D4</color>
+    <color name="neon_green">#FF10B981</color>
+    <color name="neon_orange">#FFF59E0B</color>
+    <color name="neon_red">#FFFF4757</color>
+
+    <!-- Button Colors -->
+    <color name="btn_purple_start">#FF7B4FD0</color>
+    <color name="btn_purple_end">#FF9B6FF0</color>
+    <color name="btn_pink_start">#FFE91E8C</color>
+    <color name="btn_pink_end">#FFFF4757</color>
+    <color name="btn_blue_start">#FF1E88E5</color>
+    <color name="btn_blue_end">#FF00ACC1</color>
+
+    <!-- Backward compat aliases -->
+    <color name="btn_orange_start">#FF7B4FD0</color>
+    <color name="btn_orange_end">#FF9B6FF0</color>
+    <color name="btn_cyan_start">#FF1E88E5</color>
+    <color name="btn_cyan_end">#FF00ACC1</color>
+    <color name="btn_lime_start">#FF10B981</color>
+    <color name="btn_lime_end">#FF059669</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#FFB8A8D8</color>
+    <color name="text_tertiary">#FF6B5A8A</color>
+
+    <!-- Difficulty Levels -->
+    <color name="difficulty_easy">#FF10B981</color>
     <color name="difficulty_normal">#FFF59E0B</color>
-    <color name="difficulty_hard">#FFEF4444</color>
+    <color name="difficulty_hard">#FFFF4757</color>
+
+    <!-- Status Colors -->
+    <color name="accent_danger">#FFFF4757</color>
+    <color name="accent_green">#FF10B981</color>
+    <color name="accent_primary">#FFFF2D78</color>
+
+    <!-- Cell / Card Backgrounds -->
+    <color name="cell_bg">#FF160E35</color>
+    <color name="cell_pressed">#FF221A50</color>
+    <color name="cell_stroke">#FF3D2070</color>
+    <color name="game_card_stroke">#33FFFFFF</color>
+
+    <!-- Glass Surface -->
+    <color name="glass_surface">#1AFFFFFF</color>
+    <color name="glass_border">#33FFFFFF</color>
+    <color name="glass_highlight">#0DFFFFFF</color>
+
+    <!-- Stats Row -->
+    <color name="stats_wins">#FF10B981</color>
+    <color name="stats_draws">#FF6366F1</color>
+    <color name="stats_losses">#FFFF4757</color>
 </resources>

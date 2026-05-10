@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@drawable/gradient_bg"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
-        <!-- Back button row -->
+        <!-- Top bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center_vertical"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnBackCreate"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="@drawable/btn_back"
+                android:padding="0dp"
                 android:stateListAnimator="@null"
                 android:text="&#8592;"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:padding="0dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="0dp"
@@ -40,68 +41,67 @@
                 android:gravity="center"
                 android:text="CREATE ROOM"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
-                android:letterSpacing="0.05" />
+                android:letterSpacing="0.1" />
 
-            <View android:layout_width="48dp" android:layout_height="48dp" />
+            <View android:layout_width="44dp" android:layout_height="44dp" />
         </LinearLayout>
 
         <!-- Form card -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/game_card"
-            android:elevation="8dp"
+            android:background="@drawable/bg_glass_card"
             android:orientation="vertical"
-            android:padding="28dp">
+            android:padding="24dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="Your Name"
-                android:textColor="#8B96B0"
+                android:textColor="@color/neon_pink"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                android:letterSpacing="0.1"
-                android:layout_marginBottom="8dp" />
+                android:letterSpacing="0.1" />
 
             <EditText
                 android:id="@+id/etUsername"
                 android:layout_width="match_parent"
-                android:layout_height="58dp"
+                android:layout_height="54dp"
                 android:background="@drawable/game_input"
                 android:hint="Enter your name"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
                 android:textColor="#FFFFFF"
-                android:textColorHint="#4A5568"
+                android:textColorHint="@color/text_tertiary"
                 android:textSize="16sp" />
 
-            <!-- Hidden checkbox kept for code compat, not visible -->
             <CheckBox
                 android:id="@+id/cbEmulatorHost"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:visibility="gone"
-                android:checked="false" />
+                android:checked="false"
+                android:visibility="gone" />
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:layout_marginTop="24dp">
+                android:layout_height="58dp"
+                android:layout_marginTop="20dp">
 
                 <Button
                     android:id="@+id/btnCreateRoomNow"
                     android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:background="@drawable/gold_button"
+                    android:layout_height="58dp"
+                    android:background="@drawable/btn_orange"
                     android:stateListAnimator="@null"
                     android:text="CREATE ROOM"
                     android:textAllCaps="true"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05" />
 
                 <ProgressBar
                     android:id="@+id/progressCreate"
@@ -117,27 +117,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/game_card"
-            android:elevation="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_glass_card"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="28dp">
+            android:padding="24dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ROOM CODE"
-                android:textColor="#4A5568"
-                android:textSize="12sp"
+                android:textColor="@color/text_tertiary"
+                android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.2" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -145,10 +144,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="----"
-                    android:textColor="#A855F7"
-                    android:textSize="42sp"
-                    android:textStyle="bold"
-                    android:fontFamily="sans-serif-black" />
+                    android:textColor="@color/neon_purple"
+                    android:textSize="40sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/ivShareCode"
@@ -158,7 +156,7 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:padding="10dp"
                     android:src="@android:drawable/ic_menu_share"
-                    app:tint="#8B5CF6" />
+                    android:tint="@color/neon_purple" />
             </LinearLayout>
 
             <TextView
@@ -166,14 +164,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="@drawable/bg_room_input"
+                android:gravity="center"
                 android:paddingHorizontal="20dp"
-                android:paddingVertical="8dp"
-                android:background="@drawable/game_input"
+                android:paddingVertical="10dp"
                 android:text="Waiting for connection..."
-                android:textColor="#8B96B0"
-                android:textSize="14sp"
-                android:gravity="center" />
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
         </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>

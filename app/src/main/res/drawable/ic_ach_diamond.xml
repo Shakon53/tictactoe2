@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <!-- Diamond top facets -->
+    <path android:fillColor="#A78BFA"
+        android:pathData="M24,4 L14,18 L24,14 Z"/>
+    <path android:fillColor="#7C5CBF"
+        android:pathData="M24,4 L34,18 L24,14 Z"/>
+    <!-- Left top -->
+    <path android:fillColor="#C4B5FD"
+        android:pathData="M8,18 L14,18 L24,4 L16,8 Z"/>
+    <!-- Right top -->
+    <path android:fillColor="#8B5CF6"
+        android:pathData="M40,18 L34,18 L24,4 L32,8 Z"/>
+    <!-- Bottom body left -->
+    <path android:fillColor="#DDD6FE"
+        android:pathData="M8,18 L24,14 L24,44 Z"/>
+    <!-- Bottom body right -->
+    <path android:fillColor="#7C5CBF"
+        android:pathData="M40,18 L24,14 L24,44 Z"/>
+    <!-- Top band left -->
+    <path android:fillColor="#A78BFA"
+        android:pathData="M8,18 L14,18 L24,14 Z"/>
+    <!-- Top band right -->
+    <path android:fillColor="#6D28D9"
+        android:pathData="M40,18 L34,18 L24,14 Z"/>
+    <!-- Outline -->
+    <path android:fillColor="#00000000" android:strokeColor="#C4B5FD"
+        android:strokeWidth="1.5" android:strokeLineJoin="round"
+        android:pathData="M24,4 L8,18 L24,44 L40,18 Z M14,18 L24,14 L34,18"/>
+    <!-- Shine -->
+    <path android:fillColor="#FFFFFF" android:alpha="0.5"
+        android:pathData="M16,10 L12,18 L18,16 Z"/>
+</vector>

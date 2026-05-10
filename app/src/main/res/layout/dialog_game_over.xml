@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="320dp"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/game_card"
+    android:background="@drawable/bg_glass_card"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="32dp">
+    android:padding="28dp">
 
-    <!-- Big result icon -->
+    <!-- Result icon circle -->
     <TextView
         android:id="@+id/tvGameOverIcon"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:gravity="center"
         android:text="?"
-        android:textSize="44sp"
-        android:background="@drawable/game_board_bg" />
+        android:textSize="40sp"
+        android:background="@drawable/bg_x_symbol" />
 
     <!-- Title: VICTORY / DEFEAT / DRAW -->
     <TextView
         android:id="@+id/tvGameOverTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="18dp"
         android:text="GAME OVER"
         android:textColor="#FFFFFF"
-        android:textSize="34sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        android:letterSpacing="0.03" />
+        android:letterSpacing="0.04" />
 
-    <!-- Score line -->
+    <!-- Score / message line -->
     <TextView
         android:id="@+id/tvGameOverMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:text="0W  ·  0L  ·  0D"
-        android:textColor="#4A5568"
-        android:textSize="15sp" />
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp" />
 
     <!-- Divider -->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginVertical="16dp"
-        android:background="#2D3A5C" />
+        android:layout_marginVertical="20dp"
+        android:background="@color/glass_border" />
 
     <!-- Confirm button -->
     <Button
         android:id="@+id/btnGameOverOk"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="56dp"
         android:background="@drawable/gold_button"
-        android:fontFamily="sans-serif-black"
         android:stateListAnimator="@null"
         android:text="AWESOME!"
+        android:textAllCaps="true"
         android:textColor="#FFFFFF"
-        android:textSize="17sp"
-        android:textStyle="bold" />
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.05" />
 
 </LinearLayout>

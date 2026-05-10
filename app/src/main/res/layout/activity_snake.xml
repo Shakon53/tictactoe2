@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/gradient_bg">
+
+    <!-- Top bar -->
+    <LinearLayout
+        android:id="@+id/topBarSnake"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnSnakeBack"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/btn_back"
+            android:padding="0dp"
+            android:stateListAnimator="@null"
+            android:text="&#8592;"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SNAKE"
+            android:textColor="@color/neon_green"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvSnakeScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvSnakeBest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Best: 0"
+                android:textColor="@color/neon_orange"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Snake game view -->
+    <com.example.tic_tac_toe.SnakeGameView
+        android:id="@+id/snakeGameView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toTopOf="@id/snakeControlPanel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topBarSnake"
+        app:layout_constraintDimensionRatio="3:4" />
+
+    <!-- Start/Status overlay text -->
+    <TextView
+        android:id="@+id/tvSnakeStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Press START to play"
+        android:textColor="#AAFFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/snakeControlPanel"
+        app:layout_constraintEnd_toEndOf="@id/snakeGameView"
+        app:layout_constraintStart_toStartOf="@id/snakeGameView"
+        app:layout_constraintTop_toBottomOf="@id/topBarSnake" />
+
+    <!-- D-Pad controls -->
+    <LinearLayout
+        android:id="@+id/snakeControlPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Up -->
+        <Button
+            android:id="@+id/btnSnakeUp"
+            android:layout_width="60dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_glass_card"
+            android:stateListAnimator="@null"
+            android:text="▲"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <!-- Middle row: Left + Start + Right -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnSnakeLeft"
+                android:layout_width="60dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/bg_glass_card"
+                android:stateListAnimator="@null"
+                android:text="◄"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnSnakeStart"
+                android:layout_width="80dp"
+                android:layout_height="56dp"
+                android:background="@drawable/btn_primary_lime"
+                android:stateListAnimator="@null"
+                android:text="START"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnSnakeRight"
+                android:layout_width="60dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_glass_card"
+                android:stateListAnimator="@null"
+                android:text="►"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <!-- Down -->
+        <Button
+            android:id="@+id/btnSnakeDown"
+            android:layout_width="60dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_glass_card"
+            android:stateListAnimator="@null"
+            android:text="▼"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

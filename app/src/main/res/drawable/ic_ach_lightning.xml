@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <!-- Lightning bolt -->
+    <path android:fillColor="#FBCE5C"
+        android:pathData="M28,4 L14,26 L22,26 L20,44 L34,22 L26,22 Z"/>
+    <!-- Glow outline -->
+    <path android:fillColor="#00000000" android:strokeColor="#F59E0B"
+        android:strokeWidth="1.5"
+        android:pathData="M28,4 L14,26 L22,26 L20,44 L34,22 L26,22 Z"/>
+</vector>

@@ -22,8 +22,8 @@ public class SocketClient {
         void onDisconnected();
     }
 
-    private static final String SERVER_HOST = "junction.proxy.rlwy.net";
-    private static final int SERVER_PORT = 36509;
+    private static final String SERVER_HOST = "trolley.proxy.rlwy.net";
+    private static final int SERVER_PORT = 17667;
 
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final ExecutorService executor = Executors.newCachedThreadPool();

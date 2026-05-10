@@ -3,46 +3,103 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/game_background_gradient">
+    android:fitsSystemWindows="true"
+    android:background="@drawable/gradient_bg_main">
 
-    <ImageView
-        android:id="@+id/ivSplashLogo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintBottom_toTopOf="@+id/tvSplashTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+    <View android:layout_width="280dp" android:layout_height="280dp"
+        android:layout_marginTop="-80dp" android:layout_marginEnd="-80dp"
+        android:background="@drawable/bg_blob_purple" android:alpha="0.55"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/tvSplashTitle"
+    <View android:layout_width="220dp" android:layout_height="220dp"
+        android:layout_marginBottom="-60dp" android:layout_marginStart="-60dp"
+        android:background="@drawable/bg_blob_blue" android:alpha="0.45"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Center group -->
+    <LinearLayout
+        android:id="@+id/splashCenter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/app_name"
-        android:textColor="@android:color/white"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvSplashLoading"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/splashProgressBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivSplashLogo" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.48">
+
+        <ImageView
+            android:id="@+id/ivSplashLogo"
+            android:layout_width="@dimen/splash_logo_size"
+            android:layout_height="@dimen/splash_logo_size"
+            android:src="@drawable/ic_game_logo"
+            android:contentDescription="@string/app_name"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/tvSplashTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="TIC TAC TOE"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/splash_title_size"
+            android:textStyle="bold"
+            android:letterSpacing="0.08"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tvSplashSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="ONLINE"
+            android:textColor="@color/neon_pink"
+            android:textSize="@dimen/splash_subtitle_size"
+            android:textStyle="bold"
+            android:letterSpacing="0.18"
+            android:gravity="center" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvSplashLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:alpha="0.85"
-        android:text="@string/splash_loading"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:layout_marginBottom="12dp"
+        android:text="Loading"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:letterSpacing="0.06"
+        app:layout_constraintBottom_toTopOf="@+id/splashProgressBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/splashProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="60dp"
+        android:max="100" android:progress="0"
+        app:indicatorColor="@color/neon_pink"
+        app:trackColor="#22FFFFFF"
+        app:trackThickness="6dp"
+        app:trackCornerRadius="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvSplashTitle" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSplashPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="0%"
+        android:textColor="@color/text_tertiary"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/splashProgressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

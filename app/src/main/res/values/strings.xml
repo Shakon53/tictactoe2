@@ -1,4 +1,70 @@
 <resources>
     <string name="app_name">Tic-tac-toe</string>
     <string name="splash_loading">Loading...</string>
+
+    <!-- Game status -->
+    <string name="status_your_turn">Твой ход!</string>
+    <string name="status_your_turn_difficulty">Твой ход! (%s)</string>
+    <string name="status_ai_thinking">AI думает…</string>
+    <string name="status_ai_starts">AI начинает…</string>
+    <string name="status_you_win">Ты победил!</string>
+    <string name="status_ai_wins">ИИ победил!</string>
+    <string name="status_draw">Ничья!</string>
+
+    <!-- Result dialog -->
+    <string name="result_win">ПОБЕДА!</string>
+    <string name="result_lose">ПОРАЖЕНИЕ</string>
+    <string name="result_draw">НИЧЬЯ!</string>
+    <string name="streak_label">%d wins in a row!</string>
+
+    <!-- Difficulty labels -->
+    <string name="diff_easy">Easy</string>
+    <string name="diff_normal">Normal</string>
+    <string name="diff_hard">Hard</string>
+    <string name="diff_hint_easy">Easy: случайный и прощающий AI</string>
+    <string name="diff_hint_normal">Normal: сбалансированный AI</string>
+    <string name="diff_hint_hard">Hard: сильнейший AI</string>
+
+    <!-- Profile -->
+    <string name="member_since">Участник с %s</string>
+    <string name="ach_summary">%1$d из %2$d ачивок открыто</string>
+    <string name="edit_username_title">Изменить имя</string>
+    <string name="edit_username_hint">Введи имя</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
+    <string name="choose_avatar">Выбери букву</string>
+    <string name="sign_out_title">Выйти из аккаунта</string>
+    <string name="sign_out_message">Выйти из аккаунта?\nЛокальная статистика останется на устройстве.</string>
+    <string name="sign_out_confirm">Выйти</string>
+    <string name="stats_synced">Статистика синхронизирована!</string>
+    <string name="sync_to_cloud">Синхр. с облаком (бесплатно)</string>
+    <string name="sync_now">Синхронизировать</string>
+    <string name="synced_label">Синхронизировано</string>
+    <string name="connecting">Подключение…</string>
+    <string name="connection_failed">Ошибка подключения. Попробуй снова.</string>
+    <string name="cloud_synced">Профиль сохранён в облако!</string>
+    <string name="cloud_connected_desc">Аккаунт подключён. Статистика автоматически синхронизируется. Войди с любого устройства для восстановления прогресса.</string>
+    <string name="signed_out">Выход выполнен</string>
+
+    <!-- Multiplayer room -->
+    <string name="creating_room">Создание комнаты…</string>
+    <string name="joining_room">Вход в комнату…</string>
+    <string name="waiting_opponent">Ожидание соперника…</string>
+    <string name="opponent_turn">Ход соперника</string>
+    <string name="your_turn_mp">Твой ход</string>
+    <string name="time_up">Время вышло!</string>
+    <string name="opponent_disconnected">Соперник отключился</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Добро пожаловать!</string>
+    <string name="onboarding_desc_1">Tic Tac Toe Online — классика с AI, онлайн-игрой и ачивками</string>
+    <string name="onboarding_title_2">Как играть</string>
+    <string name="onboarding_desc_2">Расставь 3 символа подряд — по горизонтали, вертикали или диагонали. Также доступны поля 4×4 и 5×5!</string>
+    <string name="onboarding_title_3">Против AI</string>
+    <string name="onboarding_desc_3">Выбери сложность: Easy, Normal или Hard. Hard использует минимакс — попробуй его победить!</string>
+    <string name="onboarding_title_4">Онлайн-игра</string>
+    <string name="onboarding_desc_4">Создай комнату — получишь 4-значный код. Поделись кодом с другом, чтобы он мог войти. Или введи чужой код в «Войти в комнату».</string>
+    <string name="onboarding_next">Далее</string>
+    <string name="onboarding_start">Начать игру!</string>
+    <string name="onboarding_skip">Пропустить</string>
 </resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <!-- Circular arrow (return/comeback) -->
+    <path android:fillColor="#00000000" android:strokeColor="#FF6B35"
+        android:strokeWidth="4" android:strokeLineCap="round"
+        android:pathData="M40,24 A16,16 0 1,1 30,10"/>
+    <!-- Arrowhead -->
+    <path android:fillColor="#FF6B35"
+        android:pathData="M28,4 L36,12 L26,14 Z"/>
+    <!-- Fist / power dot in center -->
+    <path android:fillColor="#FF6B35"
+        android:pathData="M24,18 C26.2,18 28,19.8 28,22 C28,23.5 27.2,24.8 26,25.5
+                          L27,30 L21,30 L22,25.5 C20.8,24.8 20,23.5 20,22
+                          C20,19.8 21.8,18 24,18 Z"/>
+</vector>

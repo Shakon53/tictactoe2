@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <!-- Outer flame -->
+    <path android:fillColor="#FF6B35"
+        android:pathData="M24,4 C24,4 34,14 34,24 C34,30 30,35 24,38
+                          C18,35 14,30 14,24 C14,16 20,10 24,4 Z"/>
+    <!-- Inner flame (brighter) -->
+    <path android:fillColor="#FBCE5C"
+        android:pathData="M24,14 C24,14 30,20 30,27 C30,31 27.5,34 24,36
+                          C20.5,34 18,31 18,27 C18,22 21,17 24,14 Z"/>
+    <!-- Core -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M24,24 C24,24 27,27 27,30 C27,32 25.7,33.5 24,34
+                          C22.3,33.5 21,32 21,30 C21,27 24,24 24,24 Z"/>
+</vector>

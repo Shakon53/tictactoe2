@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_achievement_card"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="28dp"
+    android:paddingVertical="32dp">
+
+    <!-- Glow ring + icon -->
+    <FrameLayout
+        android:layout_width="90dp"
+        android:layout_height="90dp">
+
+        <View
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_achievement_glow"
+            android:alpha="0.7" />
+
+        <ImageView
+            android:id="@+id/ivAchIcon"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_ach_trophy"
+            android:scaleType="fitCenter" />
+    </FrameLayout>
+
+    <!-- Label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="ACHIEVEMENT UNLOCKED!"
+        android:textColor="#FBCE5C"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.12" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvAchTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="First Blood"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/tvAchDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Win your first game"
+        android:textColor="#B8A8D8"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.3" />
+
+    <!-- Auto-dismiss hint -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Tap anywhere to continue"
+        android:textColor="#4A3A6A"
+        android:textSize="11sp" />
+
+</LinearLayout>

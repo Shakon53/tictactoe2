@@ -16,12 +16,14 @@ import android.view.Window;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -29,7 +31,7 @@ import android.content.SharedPreferences;
 import com.example.tic_tac_toe.network.SocketClient;
 import com.example.tic_tac_toe.network.SocketHolder;
 
-public class GameActivity extends AppCompatActivity implements SocketClient.SocketListener {
+public class GameActivity extends BaseGameActivity implements SocketClient.SocketListener {
 
     private static final int TURN_SECONDS = 30;
     private static final String PREFS_NAME = "tictactoe_prefs";
@@ -46,11 +48,14 @@ public class GameActivity extends AppCompatActivity implements SocketClient.Sock
     private TextView tvMyName;
     private TextView tvMySymbol;
     private TextView tvMyScore;
+    private TextView tvMyStats;
     private TextView tvOppName;
     private TextView tvOppSymbol;
     private TextView tvOppScore;
+    private TextView tvOppStats;
     private TextView tvTimer;
-    private LinearLayout timerPanel;
+    private FrameLayout timerPanel;
+    private CircularProgressIndicator circularTimer;
     private Button[] boardButtons;
 
     private SocketClient socketClient;
@@ -79,14 +84,20 @@ public class GameActivity extends AppCompatActivity implements SocketClient.Sock
         tvMyName = findViewById(R.id.tvMyName);
         tvMySymbol = findViewById(R.id.tvMySymbol);
         tvMyScore = findViewById(R.id.tvMyScore);
+        tvMyStats = findViewById(R.id.tvMyStats);
         tvOppName = findViewById(R.id.tvOppName);
         tvOppSymbol = findViewById(R.id.tvOppSymbol);
         tvOppScore = findViewById(R.id.tvOppScore);
+        tvOppStats = findViewById(R.id.tvOppStats);
         tvTimer = findViewById(R.id.tvTimer);
         timerPanel = findViewById(R.id.timerPanel);
+        circularTimer = findViewById(R.id.circularTimer);
 
         Button btnBack = findViewById(R.id.btnBackToMenu);
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> {
+            finish();
+            overridePendingTransition(R.anim.page_in_left, R.anim.page_out_right);
+        });
         GameButtonHelper.apply(btnBack);
 
         myName = getIntent().getStringExtra("username");
@@ -162,8 +173,10 @@ public class GameActivity extends AppCompatActivity implements SocketClient.Sock
     }
 
     private void refreshScores() {
-        tvMyScore.setText(myWins + "W  " + myLosses + "L  " + myDraws + "D");
-        tvOppScore.setText(oppWins + "W  " + oppLosses + "L  " + oppDraws + "D");
+        tvMyScore.setText(String.valueOf(myWins));
+        if (tvMyStats != null) tvMyStats.setText(myLosses + "L  " + myDraws + "D");
+        tvOppScore.setText(String.valueOf(oppWins));
+        if (tvOppStats != null) tvOppStats.setText(oppLosses + "L  " + oppDraws + "D");
     }
 
     private int symbolColor(String symbol) {
@@ -296,17 +309,25 @@ public class GameActivity extends AppCompatActivity implements SocketClient.Sock
     private void startTimer() {
         timerPanel.setVisibility(View.VISIBLE);
         tvTimer.setText(String.valueOf(TURN_SECONDS));
-        tvTimer.setTextColor(ContextCompat.getColor(this, R.color.game_symbol_x));
+        tvTimer.setTextColor(ContextCompat.getColor(this, R.color.neon_orange));
+        if (circularTimer != null) {
+            circularTimer.setMax(TURN_SECONDS);
+            circularTimer.setProgressCompat(TURN_SECONDS, false);
+            circularTimer.setIndicatorColor(ContextCompat.getColor(this, R.color.neon_orange));
+        }
 
         countDownTimer = new CountDownTimer(TURN_SECONDS * 1000L, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 int secsLeft = (int) (millisUntilFinished / 1000);
                 tvTimer.setText(String.valueOf(secsLeft));
+                if (circularTimer != null) circularTimer.setProgressCompat(secsLeft, true);
                 if (secsLeft <= 10) {
-                    tvTimer.setTextColor(ContextCompat.getColor(GameActivity.this, R.color.accent_danger));
-                    tvTimer.animate().scaleX(1.15f).scaleY(1.15f).setDuration(100)
-                        .withEndAction(() -> tvTimer.animate().scaleX(1f).scaleY(1f).setDuration(100).start())
+                    int danger = ContextCompat.getColor(GameActivity.this, R.color.accent_danger);
+                    tvTimer.setTextColor(danger);
+                    if (circularTimer != null) circularTimer.setIndicatorColor(danger);
+                    tvTimer.animate().scaleX(1.18f).scaleY(1.18f).setDuration(120)
+                        .withEndAction(() -> tvTimer.animate().scaleX(1f).scaleY(1f).setDuration(120).start())
                         .start();
                 }
             }
@@ -393,6 +414,8 @@ public class GameActivity extends AppCompatActivity implements SocketClient.Sock
         dialog.setContentView(R.layout.dialog_game_over);
         if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            dialog.getWindow().setDimAmount(0.75f);
         }
 
         boolean isWin = resultText.contains("Win");
@@ -415,6 +438,10 @@ public class GameActivity extends AppCompatActivity implements SocketClient.Sock
         btnOk.setOnClickListener(v -> { dialog.dismiss(); finish(); });
         dialog.setCancelable(false);
         dialog.show();
+        if (dialog.getWindow() != null) {
+            int width = (int)(getResources().getDisplayMetrics().widthPixels * 0.88);
+            dialog.getWindow().setLayout(width, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
 
         View decorView = dialog.getWindow().getDecorView();
         decorView.setScaleX(0.6f);

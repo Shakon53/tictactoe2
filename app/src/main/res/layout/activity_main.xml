@@ -1,96 +1,335 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@drawable/gradient_bg_main">
 
+    <!-- Glow blobs -->
+    <View android:layout_width="260dp" android:layout_height="260dp"
+        android:layout_gravity="top|end" android:layout_marginTop="-60dp"
+        android:layout_marginEnd="-60dp" android:background="@drawable/bg_blob_purple"
+        android:alpha="0.55" />
+    <View android:layout_width="200dp" android:layout_height="200dp"
+        android:layout_gravity="bottom|start" android:layout_marginBottom="40dp"
+        android:layout_marginStart="-60dp" android:background="@drawable/bg_blob_blue"
+        android:alpha="0.45" />
+
+    <!-- Main content -->
     <LinearLayout
         android:id="@+id/mainContent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingHorizontal="@dimen/screen_padding_h"
+        android:paddingTop="@dimen/screen_padding_top"
+        android:paddingBottom="@dimen/screen_padding_bottom">
 
+        <!-- TOP BAR -->
         <LinearLayout
-            android:id="@+id/heroCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/game_card"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="24dp">
+            android:layout_height="@dimen/topbar_height"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="6dp">
 
             <ImageView
                 android:id="@+id/ivGameLogo"
-                android:layout_width="82dp"
-                android:layout_height="82dp"
+                android:layout_width="@dimen/logo_size"
+                android:layout_height="@dimen/logo_size"
                 android:src="@drawable/ic_game_logo"
-                android:contentDescription="@string/app_name" />
+                android:contentDescription="@string/app_name"
+                android:layout_marginEnd="10dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/heroCard"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="TIC TAC TOE"
-                android:textColor="#FFFFFF"
-                android:textSize="32sp"
-                android:textStyle="bold" />
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Play solo or online with friends"
-                android:textColor="#C4B5FD"
-                android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/tvTitleMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TIC TAC TOE"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/title_text_size"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.06" />
+
+                <TextView
+                    android:id="@+id/tvTitleOnline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ONLINE"
+                    android:textColor="@color/neon_pink"
+                    android:textSize="@dimen/subtitle_text_size"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.15" />
+            </LinearLayout>
+
+            <!-- Profile icon -->
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <View
+                    android:id="@+id/glowProfile"
+                    android:layout_width="@dimen/btn_profile_size"
+                    android:layout_height="@dimen/btn_profile_size"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_glow_purple"
+                    android:alpha="0" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnProfile"
+                    android:layout_width="@dimen/btn_profile_size"
+                    android:layout_height="@dimen/btn_profile_size"
+                    android:layout_gravity="center"
+                    android:background="@drawable/btn_primary_purple"
+                    android:stateListAnimator="@null"
+                    android:text=""
+                    android:insetTop="0dp" android:insetBottom="0dp"
+                    app:icon="@drawable/ic_person" app:iconTint="#FFFFFF"
+                    app:iconGravity="textStart" app:iconPadding="0dp" app:iconSize="22dp"
+                    app:backgroundTint="@null" app:strokeWidth="0dp" app:cornerRadius="32dp" />
+            </FrameLayout>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnSinglePlayer"
-            android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:layout_marginBottom="14dp"
-            android:background="@drawable/btn_orange"
-            android:stateListAnimator="@null"
-            android:text="SINGLE PLAYER"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+        <!-- Divider -->
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="@color/glass_border" android:layout_marginBottom="0dp" />
 
-        <Button
-            android:id="@+id/btnMultiplayer"
-            android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:layout_marginBottom="14dp"
-            android:background="@drawable/btn_teal"
-            android:stateListAnimator="@null"
-            android:text="MULTIPLAYER"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+        <!-- Top spacer -->
+        <Space android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/btnSettings"
+        <!-- SINGLE PLAYER -->
+        <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <View android:id="@+id/glowSinglePlayer"
+                android:layout_width="match_parent" android:layout_height="80dp"
+                android:layout_gravity="center" android:background="@drawable/bg_glow_orange" android:alpha="0" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSinglePlayer"
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_orange"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:letterSpacing="0.08"
+                android:stateListAnimator="@null"
+                android:text="SINGLE PLAYER"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/btn_text_size"
+                android:textStyle="bold"
+                app:backgroundTint="@null"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/ic_person"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/btn_icon_padding"
+                app:iconTint="#FFFFFF"
+                app:strokeWidth="0dp" />
+        </FrameLayout>
+
+        <Space android:layout_width="0dp" android:layout_height="@dimen/btn_space" />
+
+        <!-- MULTIPLAYER -->
+        <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <View android:id="@+id/glowMultiplayer"
+                android:layout_width="match_parent" android:layout_height="80dp"
+                android:layout_gravity="center" android:background="@drawable/bg_glow_teal" android:alpha="0" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMultiplayer"
+                android:layout_width="match_parent"
+                android:layout_height="63dp"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_teal"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:letterSpacing="0.08"
+                android:stateListAnimator="@null"
+                android:text="MULTIPLAYER"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/btn_text_size"
+                android:textStyle="bold"
+                app:backgroundTint="@null"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/ic_people"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/btn_icon_padding"
+                app:iconTint="#FFFFFF"
+                app:strokeWidth="0dp" />
+        </FrameLayout>
+
+        <Space android:layout_width="0dp" android:layout_height="@dimen/btn_space" />
+
+        <!-- SETTINGS -->
+        <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <View android:id="@+id/glowSettings"
+                android:layout_width="match_parent" android:layout_height="80dp"
+                android:layout_gravity="center" android:background="@drawable/bg_glow_purple" android:alpha="0" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSettings"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_gravity="center"
+                android:background="@drawable/game_button"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:letterSpacing="0.08"
+                android:stateListAnimator="@null"
+                android:text="SETTINGS"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/btn_text_size"
+                android:textStyle="bold"
+                app:backgroundTint="@null"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/ic_settings_gear"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/btn_icon_padding"
+                app:iconTint="#FFFFFF"
+                app:strokeWidth="0dp" />
+        </FrameLayout>
+
+        <Space android:layout_width="0dp" android:layout_height="@dimen/btn_space" />
+
+        <!-- MORE GAMES -->
+        <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <View android:id="@+id/glowMoreGames"
+                android:layout_width="match_parent" android:layout_height="80dp"
+                android:layout_gravity="center" android:background="@drawable/bg_glow_teal" android:alpha="0" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMoreGames"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_teal"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:letterSpacing="0.08"
+                android:stateListAnimator="@null"
+                android:text="MORE GAMES"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/btn_text_size"
+                android:textStyle="bold"
+                app:backgroundTint="@null"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/ic_grid_games"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/btn_icon_padding"
+                app:iconTint="#FFFFFF"
+                app:strokeWidth="0dp" />
+        </FrameLayout>
+
+        <Space android:layout_width="0dp" android:layout_height="@dimen/btn_space" />
+
+        <!-- ACHIEVEMENTS + SKINS (secondary row) -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/game_button"
-            android:stateListAnimator="@null"
-            android:text="SETTINGS"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <View android:id="@+id/glowAchievements"
+                    android:layout_width="match_parent" android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_glow_orange" android:alpha="0" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAchievements"
+                    android:layout_width="match_parent" android:layout_height="@dimen/btn_height"
+                    android:layout_gravity="center" android:background="@drawable/btn_orange"
+                    android:stateListAnimator="@null" android:text="ACHIEVEMENTS"
+                    android:textAllCaps="false" android:textColor="#FFFFFF"
+                    android:textSize="12sp" android:textStyle="bold"
+                    android:letterSpacing="0.04" android:insetTop="0dp" android:insetBottom="0dp"
+                    app:backgroundTint="@null" app:strokeWidth="0dp" app:cornerRadius="0dp" />
+            </FrameLayout>
+
+            <Space android:layout_width="@dimen/btn_space" android:layout_height="0dp" />
+
+            <FrameLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <View android:id="@+id/glowSkins"
+                    android:layout_width="match_parent" android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_glow_purple" android:alpha="0" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSkins"
+                    android:layout_width="match_parent" android:layout_height="@dimen/btn_height"
+                    android:layout_gravity="center" android:background="@drawable/btn_primary_pink"
+                    android:stateListAnimator="@null" android:text="SKINS"
+                    android:textAllCaps="false" android:textColor="#FFFFFF"
+                    android:textSize="12sp" android:textStyle="bold"
+                    android:letterSpacing="0.04" android:insetTop="0dp" android:insetBottom="0dp"
+                    app:backgroundTint="@null" app:strokeWidth="0dp" app:cornerRadius="0dp" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- Bottom spacer -->
+        <Space android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" />
+
+        <!-- Stats row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="6dp">
+
+            <LinearLayout
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:layout_marginEnd="5dp"
+                android:background="@drawable/bg_stat_wins" android:gravity="center"
+                android:orientation="vertical" android:paddingVertical="@dimen/stat_padding_v">
+                <TextView android:id="@+id/tvMainWins"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="0" android:textColor="#FFFFFF"
+                    android:textSize="@dimen/stat_number_size" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="WINS" android:textColor="@color/text_tertiary"
+                    android:textSize="@dimen/stat_label_size" android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:layout_marginHorizontal="5dp"
+                android:background="@drawable/bg_stat_draws" android:gravity="center"
+                android:orientation="vertical" android:paddingVertical="@dimen/stat_padding_v">
+                <TextView android:id="@+id/tvMainDraws"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="0" android:textColor="#FFFFFF"
+                    android:textSize="@dimen/stat_number_size" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="DRAWS" android:textColor="@color/text_tertiary"
+                    android:textSize="@dimen/stat_label_size" android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:layout_marginStart="5dp"
+                android:background="@drawable/bg_stat_losses" android:gravity="center"
+                android:orientation="vertical" android:paddingVertical="@dimen/stat_padding_v">
+                <TextView android:id="@+id/tvMainLosses"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="0" android:textColor="#FFFFFF"
+                    android:textSize="@dimen/stat_number_size" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="LOSSES" android:textColor="@color/text_tertiary"
+                    android:textSize="@dimen/stat_label_size" android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="v2.4.1  •  Best game 2024"
+            android:textColor="@color/text_tertiary" android:textSize="11sp" />
 
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.tic_tac_toe.network.SocketClient;
 import com.example.tic_tac_toe.network.SocketHolder;
 
-public class JoinRoomActivity extends AppCompatActivity implements SocketClient.SocketListener {
+public class JoinRoomActivity extends BaseGameActivity implements SocketClient.SocketListener {
 
     private static final String PREFS_NAME = "tictactoe_prefs";
     private static final String KEY_USERNAME = "last_username";
@@ -53,7 +53,10 @@ public class JoinRoomActivity extends AppCompatActivity implements SocketClient.
         progressJoin = findViewById(R.id.progressJoin);
 
         Button btnBack = findViewById(R.id.btnBackJoin);
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> {
+            finish();
+            overridePendingTransition(R.anim.page_in_left, R.anim.page_out_right);
+        });
         GameButtonHelper.apply(btnBack);
 
         btnJoin.setOnClickListener(v -> joinRoom());
@@ -195,7 +198,7 @@ public class JoinRoomActivity extends AppCompatActivity implements SocketClient.
         intent.putExtra("roomCode", roomCode);
         intent.putExtra("mySymbol", mySymbol);
         startActivity(intent);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        overridePendingTransition(R.anim.page_in_right, R.anim.page_out_left);
         finish();
     }
 

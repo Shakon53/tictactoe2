@@ -36,6 +36,27 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".MemoryMatchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SnakeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AchievementsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SkinsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OnboardingActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>

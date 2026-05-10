@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Base dimensions — normal phones (≥411dp width, e.g. Samsung S21, Pixel 6) -->
+<resources>
+    <!-- Screen padding -->
+    <dimen name="screen_padding_h">20dp</dimen>
+    <dimen name="screen_padding_top">10dp</dimen>
+    <dimen name="screen_padding_bottom">12dp</dimen>
+
+    <!-- Logo -->
+    <dimen name="logo_size">42dp</dimen>
+    <dimen name="splash_logo_size">100dp</dimen>
+    <dimen name="login_logo_size">80dp</dimen>
+
+    <!-- Title text -->
+    <dimen name="title_text_size">22sp</dimen>
+    <dimen name="subtitle_text_size">12sp</dimen>
+    <dimen name="splash_title_size">34sp</dimen>
+    <dimen name="splash_subtitle_size">22sp</dimen>
+
+    <!-- Buttons -->
+    <dimen name="btn_height">60dp</dimen>
+    <dimen name="btn_text_size">16sp</dimen>
+    <dimen name="btn_icon_padding">10dp</dimen>
+    <dimen name="btn_space">12dp</dimen>
+    <dimen name="btn_profile_size">44dp</dimen>
+
+    <!-- Stats -->
+    <dimen name="stat_number_size">22sp</dimen>
+    <dimen name="stat_label_size">10sp</dimen>
+    <dimen name="stat_padding_v">12dp</dimen>
+
+    <!-- Cards -->
+    <dimen name="card_padding_h">28dp</dimen>
+    <dimen name="card_padding_v">32dp</dimen>
+
+    <!-- Game board cells -->
+    <dimen name="cell_min_size">90dp</dimen>
+    <dimen name="cell_text_size">36sp</dimen>
+    <dimen name="cell_corner">14dp</dimen>
+
+    <!-- Top bar -->
+    <dimen name="topbar_height">48dp</dimen>
+    <dimen name="topbar_btn_size">40dp</dimen>
+    <dimen name="topbar_title_size">15sp</dimen>
+
+    <!-- Dialog -->
+    <dimen name="dialog_width_fraction">0.92</dimen>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <!-- Skull dome -->
+    <path android:fillColor="#B39DDB"
+        android:pathData="M24,6 C13,6 8,14 8,22 C8,28 11,33 16,35 L16,40 C16,41.1 16.9,42 18,42
+                          L30,42 C31.1,42 32,41.1 32,40 L32,35 C37,33 40,28 40,22 C40,14 35,6 24,6 Z"/>
+    <!-- Eye sockets -->
+    <path android:fillColor="#1A0D38"
+        android:pathData="M18,18 C18,18 14,20 14,23 C14,26 16,28 18,28
+                          C20,28 22,26 22,23 C22,20 18,18 18,18 Z"/>
+    <path android:fillColor="#1A0D38"
+        android:pathData="M30,18 C30,18 26,20 26,23 C26,26 28,28 30,28
+                          C32,28 34,26 34,23 C34,20 30,18 30,18 Z"/>
+    <!-- Nose -->
+    <path android:fillColor="#1A0D38"
+        android:pathData="M22,30 L24,33 L26,30 Z"/>
+    <!-- Teeth dividers -->
+    <path android:fillColor="#1A0D38" android:strokeWidth="1"
+        android:pathData="M20,37 L20,42 M24,37 L24,42 M28,37 L28,42"/>
+</vector>

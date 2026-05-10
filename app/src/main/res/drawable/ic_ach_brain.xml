@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <!-- Lightbulb body -->
+    <path android:fillColor="#FBCE5C"
+        android:pathData="M24,6 C16,6 10,12 10,20 C10,26 13,30 18,33 L18,38
+                          C18,39.1 18.9,40 20,40 L28,40 C29.1,40 30,39.1 30,38
+                          L30,33 C35,30 38,26 38,20 C38,12 32,6 24,6 Z"/>
+    <!-- Bulb shine -->
+    <path android:fillColor="#FFFFFF" android:alpha="0.4"
+        android:pathData="M18,10 C15,13 13,16 13,20 C13,21 13.3,22 14,23
+                          C14,17 16,12 20,10 Z"/>
+    <!-- Base lines -->
+    <path android:fillColor="#F59E0B"
+        android:pathData="M19,40 L29,40 L29,42 C29,43.1 28.1,44 27,44
+                          L21,44 C19.9,44 19,43.1 19,42 Z"/>
+    <!-- Circuit lines inside bulb -->
+    <path android:fillColor="#00000000" android:strokeColor="#F59E0B"
+        android:strokeWidth="1.8" android:strokeLineCap="round"
+        android:pathData="M20,20 L24,16 L28,20 M24,16 L24,28"/>
+    <path android:fillColor="#F59E0B"
+        android:pathData="M21,22 A3,3 0 1,0 27,22 A3,3 0 1,0 21,22 Z"/>
+</vector>

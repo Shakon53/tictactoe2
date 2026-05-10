@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="28"
+    android:viewportHeight="28">
+    <!-- Phone body -->
+    <path
+        android:fillColor="#FBCE5C"
+        android:pathData="M10,4 C8.9,4 8,4.9 8,6 L8,22 C8,23.1 8.9,24 10,24 L18,24
+                          C19.1,24 20,23.1 20,22 L20,6 C20,4.9 19.1,4 18,4 Z" />
+    <!-- Screen -->
+    <path
+        android:fillColor="#1A000000"
+        android:pathData="M9.5,7 L18.5,7 L18.5,19 L9.5,19 Z" />
+    <!-- Home button dot -->
+    <path
+        android:fillColor="#1A000000"
+        android:pathData="M14,21 C14.55,21 15,21.45 15,22 C15,22.55 14.55,23 14,23
+                          C13.45,23 13,22.55 13,22 C13,21.45 13.45,21 14,21 Z" />
+    <!-- Vibration lines left -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FBCE5C"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M6,10 C4.5,10.5 4,11.5 4,12 C4,12.5 4.5,13.5 6,14" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FBCE5C"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M4,8 C1.5,9 1,11 1,12 C1,13 1.5,15 4,16" />
+    <!-- Vibration lines right -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FBCE5C"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M22,10 C23.5,10.5 24,11.5 24,12 C24,12.5 23.5,13.5 22,14" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FBCE5C"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M24,8 C26.5,9 27,11 27,12 C27,13 26.5,15 24,16" />
+</vector>
