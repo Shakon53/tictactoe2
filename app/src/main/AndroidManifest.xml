@@ -57,6 +57,9 @@
             android:name=".OnboardingActivity"
             android:exported="false" />
         <activity
+            android:name=".SupportActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>

@@ -109,6 +109,15 @@ public class ProfileActivity extends BaseGameActivity {
             startActivity(new Intent(this, SkinsActivity.class));
             overridePendingTransition(R.anim.page_in_right, R.anim.page_out_left);
         });
+
+        LinearLayout btnGoSupport = findViewById(R.id.btnGoSupport);
+        if (btnGoSupport != null) {
+            btnGoSupport.setOnClickListener(v -> {
+                startActivity(new Intent(this, SupportActivity.class));
+                overridePendingTransition(R.anim.page_in_right, R.anim.page_out_left);
+            });
+        }
+
         btnSignOut.setOnClickListener(v -> showSignOutDialog());
 
         loadProfile();

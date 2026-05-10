@@ -2,10 +2,12 @@ package com.example.tic_tac_toe;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -90,6 +92,12 @@ public class SettingsActivity extends BaseGameActivity {
         btnBack.setOnClickListener(v -> {
             finish();
             overridePendingTransition(R.anim.page_in_left, R.anim.page_out_right);
+        });
+
+        LinearLayout rowSupport = findViewById(R.id.rowSupport);
+        rowSupport.setOnClickListener(v -> {
+            startActivity(new Intent(this, SupportActivity.class));
+            overridePendingTransition(R.anim.page_in_right, R.anim.page_out_left);
         });
     }
 

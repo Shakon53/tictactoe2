@@ -55,6 +55,26 @@
     <string name="time_up">Время вышло!</string>
     <string name="opponent_disconnected">Соперник отключился</string>
 
+    <!-- Support -->
+    <string name="support_title">ПОДДЕРЖКА</string>
+    <string name="support_header">Связаться с нами</string>
+    <string name="support_header_sub">Обращения рассматриваются администратором</string>
+    <string name="support_from_label">ОТ КОГО</string>
+    <string name="support_category_label">КАТЕГОРИЯ</string>
+    <string name="support_subject_label">ТЕМА</string>
+    <string name="support_subject_hint">Кратко опиши проблему</string>
+    <string name="support_message_label">СООБЩЕНИЕ</string>
+    <string name="support_message_hint">Подробно опиши ситуацию…</string>
+    <string name="support_submit">Отправить обращение</string>
+    <string name="support_sending">Отправка…</string>
+    <string name="support_success_title">Обращение отправлено!</string>
+    <string name="support_success_sub">Администратор рассмотрит его в ближайшее время</string>
+    <string name="support_done">Готово</string>
+    <string name="support_error_subject">Укажи тему</string>
+    <string name="support_error_message">Напиши сообщение</string>
+    <string name="support_nav_label">Поддержка</string>
+    <string name="support_nav_sub">Связаться с командой</string>
+
     <!-- Onboarding -->
     <string name="onboarding_title_1">Добро пожаловать!</string>
     <string name="onboarding_desc_1">Tic Tac Toe Online — классика с AI, онлайн-игрой и ачивками</string>
