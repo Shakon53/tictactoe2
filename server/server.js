@@ -3,9 +3,12 @@ const http = require('http');
 
 const PORT = process.env.PORT || 36509;
 
-// rooms: { code -> { creator, joiner, board, currentTurn, createdAt } }
+// rooms: { code -> { creator, joiner, board, currentTurn, createdAt, status } }
 const rooms = new Map();
 let totalGamesPlayed = 0;
+
+// Quick match queue: [{ socket, username }]
+const matchQueue = [];
 
 const WIN_COMBOS = [
   [0,1,2],[3,4,5],[6,7,8],
@@ -103,7 +106,10 @@ function handleMessage(socket, line) {
       send(opponent.socket, 'LOSE');
       console.log(`Room ${code}: ${mover.username} wins`);
       totalGamesPlayed++;
-      rooms.delete(code);
+      room.status = 'ended';
+      room.rematchCreator = false;
+      room.rematchJoiner  = false;
+      setTimeout(() => { if (rooms.get(code) === room) rooms.delete(code); }, 120000);
       return;
     }
 
@@ -112,12 +118,100 @@ function handleMessage(socket, line) {
       send(opponent.socket, 'DRAW');
       console.log(`Room ${code}: draw`);
       totalGamesPlayed++;
-      rooms.delete(code);
+      room.status = 'ended';
+      room.rematchCreator = false;
+      room.rematchJoiner  = false;
+      setTimeout(() => { if (rooms.get(code) === room) rooms.delete(code); }, 120000);
       return;
     }
 
     room.currentTurn = opponent.symbol;
     send(opponent.socket, 'YOUR_TURN');
+
+  } else if (cmd === 'QUICK_MATCH') {
+    const username = parts[1] || 'Player';
+    // Remove stale queue entries (disconnected sockets)
+    for (let i = matchQueue.length - 1; i >= 0; i--) {
+      if (matchQueue[i].socket.destroyed) matchQueue.splice(i, 1);
+    }
+    if (matchQueue.length > 0) {
+      const waiter = matchQueue.shift();
+      let code;
+      do { code = generateCode(); } while (rooms.has(code));
+      rooms.set(code, {
+        creator:    { socket: waiter.socket, username: waiter.username, symbol: 'X' },
+        joiner:     { socket, username, symbol: 'O' },
+        board:      Array(9).fill(null),
+        currentTurn:'X',
+        createdAt:  Date.now(),
+        status:     'playing',
+        rematchCreator: false,
+        rematchJoiner:  false,
+      });
+      send(waiter.socket, `MATCH_FOUND|${code}|X|${username}`);
+      send(socket,         `MATCH_FOUND|${code}|O|${waiter.username}`);
+      send(waiter.socket,  'YOUR_TURN');
+      console.log(`Quick match: ${waiter.username}(X) vs ${username}(O) — room ${code}`);
+    } else {
+      matchQueue.push({ socket, username });
+      send(socket, 'QUEUE_WAITING');
+      console.log(`Quick match queue: ${username} waiting`);
+    }
+
+  } else if (cmd === 'CANCEL_MATCH') {
+    const idx = matchQueue.findIndex(p => p.socket === socket);
+    if (idx !== -1) matchQueue.splice(idx, 1);
+    send(socket, 'MATCH_CANCELLED');
+
+  } else if (cmd === 'REMATCH_REQUEST') {
+    const code = parts[1];
+    const room = rooms.get(code);
+    if (!room || room.status !== 'ended') { send(socket, 'ERROR|Rematch not available'); return; }
+
+    const isCreator = room.creator?.socket === socket;
+    const isJoiner  = room.joiner?.socket  === socket;
+    if (!isCreator && !isJoiner) { send(socket, 'ERROR|Not in this room'); return; }
+
+    if (isCreator) room.rematchCreator = true;
+    else           room.rematchJoiner  = true;
+
+    const other = isCreator ? room.joiner : room.creator;
+    if (other?.socket) send(other.socket, 'REMATCH_REQUESTED');
+
+    if (room.rematchCreator && room.rematchJoiner) {
+      room.board       = Array(9).fill(null);
+      room.currentTurn = 'X';
+      room.status      = 'playing';
+      room.rematchCreator = false;
+      room.rematchJoiner  = false;
+      send(room.creator.socket, `START_GAME|${room.joiner.username}`);
+      send(room.joiner.socket,  `START_GAME|${room.creator.username}`);
+      send(room.creator.socket, 'YOUR_TURN');
+      console.log(`Room ${code}: rematch started`);
+    }
+
+  } else if (cmd === 'REJOIN_ROOM') {
+    const code     = parts[1];
+    const username = parts[2];
+    const room     = rooms.get(code);
+    if (!room) { send(socket, 'ERROR|Room expired'); return; }
+
+    const isCreator = room.creator?.username === username;
+    const isJoiner  = room.joiner?.username  === username;
+    if (!isCreator && !isJoiner) { send(socket, 'ERROR|Not a member of this room'); return; }
+
+    if (isCreator) room.creator = { ...room.creator, socket };
+    else           room.joiner  = { ...room.joiner,  socket };
+
+    const symbol  = isCreator ? 'X' : 'O';
+    const oppName = isCreator ? (room.joiner?.username || 'Opponent')
+                              : (room.creator?.username || 'Opponent');
+    send(socket, `REJOIN_SUCCESS|${symbol}|${oppName}|${room.currentTurn}`);
+
+    const other = isCreator ? room.joiner : room.creator;
+    if (other?.socket && !other.socket.destroyed) send(other.socket, 'OPPONENT_RECONNECTED');
+    if (room.status === 'waiting_rejoin') room.status = 'playing';
+    console.log(`Room ${code}: ${username} rejoined`);
   }
 }
 
@@ -129,6 +223,19 @@ const httpServer = http.createServer((req, res) => {
 
   if (req.method === 'OPTIONS') {
     res.writeHead(204); res.end(); return;
+  }
+
+  // GET / or /health — for UptimeRobot / keep-alive pings
+  if (req.method === 'GET' && (req.url === '/' || req.url === '/health')) {
+    res.writeHead(200);
+    res.end(JSON.stringify({
+      status:      'ok',
+      rooms:       rooms.size,
+      queue:       matchQueue.length,
+      uptime:      Math.floor(process.uptime()),
+      timestamp:   new Date().toISOString(),
+    }));
+    return;
   }
 
   // GET /admin/rooms
@@ -225,12 +332,29 @@ const server = net.createServer((socket) => {
       socket.on('data', onData);
 
       socket.on('close', () => {
+        // Remove from quick-match queue if waiting
+        const qIdx = matchQueue.findIndex(p => p.socket === socket);
+        if (qIdx !== -1) matchQueue.splice(qIdx, 1);
+
         const result = getRoomBySocket(socket);
         if (!result) return;
         const { code, room } = result;
         const other = room.creator?.socket === socket ? room.joiner : room.creator;
-        if (other?.socket) send(other.socket, 'ERROR|Opponent disconnected');
-        rooms.delete(code);
+        if (other?.socket) send(other.socket, 'OPPONENT_DISCONNECTED');
+
+        if (room.status === 'playing') {
+          room.status = 'waiting_rejoin';
+          // Delete room if opponent doesn't rejoin within 30 seconds
+          setTimeout(() => {
+            if (rooms.get(code) === room && room.status === 'waiting_rejoin') {
+              rooms.delete(code);
+            }
+          }, 30000);
+        } else if (room.status === 'ended') {
+          // already handled by 2-min timeout
+        } else {
+          rooms.delete(code);
+        }
       });
 
       socket.on('error', () => {});
