@@ -150,6 +150,8 @@ function handleMessage(socket, line) {
       });
       send(waiter.socket, `MATCH_FOUND|${code}|X|${username}`);
       send(socket,         `MATCH_FOUND|${code}|O|${waiter.username}`);
+      send(waiter.socket,  `START_GAME|${username}`);
+      send(socket,         `START_GAME|${waiter.username}`);
       send(waiter.socket,  'YOUR_TURN');
       console.log(`Quick match: ${waiter.username}(X) vs ${username}(O) — room ${code}`);
     } else {
